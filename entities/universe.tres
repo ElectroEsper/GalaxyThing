@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b13716jq3y8dc"]
+
+[sub_resource type="Shader" id="1"]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform bool use_mult;
+uniform float key_distance : hint_range(0, 1);
+uniform vec4 chroma_key : source_color;
+uniform vec4 color : source_color;
+
+void fragment() {
+  COLOR = texture(TEXTURE, UV);
+  
+  if (distance(COLOR, chroma_key) < key_distance) {
+    if (use_mult) {
+      COLOR =  COLOR * color;      
+     }
+    else {
+      COLOR = color;
+     }
+   }
+}"
+
+[resource]
+shader = SubResource("1")
+shader_parameter/use_mult = true
+shader_parameter/key_distance = 0.103
+shader_parameter/chroma_key = Color(0, 0, 0, 1)
+shader_parameter/color = Color(1, 1, 1, 0)

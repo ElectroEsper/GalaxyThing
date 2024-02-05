@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://entities/ui/background_test.PNG" type="Texture2D" id=1]
+
+[node name="Interface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background_test" type="Sprite2D" parent="."]
+visible = false
+position = Vector2( 512.011, 300.049 )
+scale = Vector2( 0.533612, 0.592785 )
+texture = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 853.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -314.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tree" type="Tree" parent="Panel"]
+modulate = Color( 0.737255, 0.996078, 1, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
