@@ -1,0 +1,28 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://data/AI/nodes_old/blackboard_old.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/AI/behavior_tree/script/bt_star_system.gd" type="Script" id=2]
+[ext_resource path="res://data/AI/nodes_old/flow/selector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://data/AI/nodes_old/leaf/sort_fleets.tscn" type="PackedScene" id=4]
+[ext_resource path="res://data/AI/nodes_old/decorator/has_contact_report.tscn" type="PackedScene" id=5]
+[ext_resource path="res://data/AI/nodes_old/leaf/set_status_idle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://data/AI/nodes_old/leaf/setup_combat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://data/AI/nodes_old/leaf/cooldown.tscn" type="PackedScene" id=8]
+
+[node name="bt_star_system" type="Node"]
+script = ExtResource( 2 )
+
+[node name="selector" parent="." instance=ExtResource( 3 )]
+
+[node name="sort_fleets(customs office)" parent="selector" instance=ExtResource( 4 )]
+
+[node name="has_contact_report" parent="selector" instance=ExtResource( 5 )]
+
+[node name="setup_combat" parent="selector/has_contact_report" instance=ExtResource( 7 )]
+
+[node name="set_status_idle" parent="selector" instance=ExtResource( 6 )]
+
+[node name="cooldown" parent="selector/set_status_idle" instance=ExtResource( 8 )]
+timer = 1
+
+[node name="blackboard" parent="." instance=ExtResource( 1 )]

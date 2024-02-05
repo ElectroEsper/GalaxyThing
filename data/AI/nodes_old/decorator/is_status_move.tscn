@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://data/AI/nodes_old/decorator/script/is_status_move.gd" type="Script" id=1]
+
+[node name="is_status_move" type="Node"]
+script = ExtResource( 1 )

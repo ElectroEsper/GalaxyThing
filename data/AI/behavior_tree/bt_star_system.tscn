@@ -1,0 +1,40 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://data/AI/behavior_tree/script/BT_System.gd" type="Script" id=1]
+[ext_resource path="res://addons/behavior_tree/src/btnodes/composites/bt_selector.gd" type="Script" id=2]
+[ext_resource path="res://data/AI/nodes/leaf/sort_fleets.gd" type="Script" id=3]
+[ext_resource path="res://data/AI/nodes/decorator/has_contact_to_report.gd" type="Script" id=4]
+[ext_resource path="res://data/AI/nodes/leaf/set_status_idle.gd" type="Script" id=5]
+[ext_resource path="res://data/AI/nodes/leaf/awacs.gd" type="Script" id=6]
+[ext_resource path="res://addons/behavior_tree/src/btnodes/leaves/bt_wait.gd" type="Script" id=7]
+[ext_resource path="res://addons/behavior_tree/src/btnodes/composites/bt_sequence.gd" type="Script" id=8]
+[ext_resource path="res://data/AI/nodes/leaf/set_status_combat.gd" type="Script" id=9]
+
+[node name="BT_System" type="Node"]
+script = ExtResource( 1 )
+debug = true
+
+[node name="BTSelector" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="SortFleets" type="Node" parent="BTSelector"]
+script = ExtResource( 3 )
+
+[node name="AWACS" type="Node" parent="BTSelector"]
+script = ExtResource( 6 )
+
+[node name="HasContactAlert" type="Node" parent="BTSelector"]
+script = ExtResource( 4 )
+
+[node name="SetStatusCombat" type="Node" parent="BTSelector/HasContactAlert"]
+script = ExtResource( 9 )
+
+[node name="BTSequence" type="Node" parent="BTSelector"]
+script = ExtResource( 8 )
+
+[node name="SetStatusIdle" type="Node" parent="BTSelector/BTSequence"]
+script = ExtResource( 5 )
+
+[node name="BTWait" type="Node" parent="BTSelector/BTSequence"]
+script = ExtResource( 7 )
+wait_time = 5.0
