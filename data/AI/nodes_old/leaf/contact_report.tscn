@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://data/AI/nodes_old/leaf/script/contact_report.gd" type="Script" id=1]
+
+[node name="contact_report" type="Node"]
+script = ExtResource( 1 )
